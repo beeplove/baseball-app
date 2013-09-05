@@ -9,7 +9,8 @@ class DataController < ApplicationController
             team.players.each do |player|
               data << {
                 name: player.name,
-                avg: player.avg
+                avg: player.avg,
+                hr: player.hr
               }
             end
           end
@@ -18,7 +19,7 @@ class DataController < ApplicationController
     end
 
     result = {
-      headers: [ 'Name', 'Avg' ],
+      headers: [ 'Name', 'Avg', 'HR' ],
       data: data
     }
 

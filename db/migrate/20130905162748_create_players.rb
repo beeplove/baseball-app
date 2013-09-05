@@ -21,7 +21,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :walked_batter
       t.string :doubles
       t.string :triples
-      t.string :home_runs
+      t.integer :home_runs
       t.string :rbi
       t.string :steals
       t.string :caught_stealing

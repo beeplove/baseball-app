@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20130905162748) do
     t.string   "walked_batter"
     t.string   "doubles"
     t.string   "triples"
-    t.string   "home_runs"
+    t.integer  "home_runs"
     t.string   "rbi"
     t.string   "steals"
     t.string   "caught_stealing"

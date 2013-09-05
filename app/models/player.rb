@@ -34,4 +34,8 @@ class Player < ActiveRecord::Base
     return 0 if hits.to_i.zero? || at_bats.to_i.zero?
     '%.3f' % (hits.to_f / at_bats)
   end
+
+  def hr
+    home_runs
+  end
 end

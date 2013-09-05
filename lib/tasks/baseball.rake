@@ -5,16 +5,9 @@ namespace :baseball do
   desc "TODO"
   task :load_1998 => :environment do
     xml = Nokogiri::XML(open('http://www.cafeconleche.org/examples/baseball/1998statistics.xml'))
-    data = Hash.from_xml(xml.to_s)    
+    data = Hash.from_xml(xml.to_s)
 
-    # @name = data['DIVISION_NAME']
-    # @teams = data['TEAM'].collect { |team| Team.new(team, self) }
-
-    # @name = data['TEAM_NAME']
-    # @city = data['TEAM_CITY']
-    # @players = data['PLAYER'].collect { |player| Player.new(player, self) }    
-
-    Season.destroy_all
+    Season.destroy_all(year: 1998)
 
     season_data = data['SEASON']
     season = Season.create(year: season_data['YEAR'])
