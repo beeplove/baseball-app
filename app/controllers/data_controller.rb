@@ -10,7 +10,8 @@ class DataController < ApplicationController
               data << {
                 name: player.name,
                 avg: player.avg,
-                hr: player.hr
+                hr: player.hr,
+                rbi: player.rbi
               }
             end
           end
@@ -19,7 +20,7 @@ class DataController < ApplicationController
     end
 
     result = {
-      headers: [ 'Name', 'Avg', 'HR' ],
+      headers: [ 'Name', 'Avg', 'HR', 'RBI' ],
       data: data
     }
 
