@@ -1,5 +1,10 @@
 == Getting Started
 
-To load data
+* database.yml
+
+config/database.yml has removed from repo intentionally. Please copy from config/database.yml.sample and make necessary update.
+
+
+* To load data
 
 % rake baseball:load_1998
