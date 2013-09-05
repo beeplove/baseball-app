@@ -1,52 +1,37 @@
-class Player
-  # SURNAME
-  # GIVEN_NAME
-  # POSITION
-  # GAMES
-  # GAMES_STARTED
-  # AT_BATS
-  # RUNS
-  # HITS
-  # DOUBLES
-  # TRIPLES
-  # HOME_RUNS => hr
-  # RBI
-  # STEALS => sb
-  # CAUGHT_STEALING
-  # SACRIFICE_HITS
-  # SACRIFICE_FLIES
-  # ERRORS
-  # PB
-  # WALKS
-  # STRUCK_OUT
-  # HIT_BY_PITCH
-
-  attr_reader :surname, :given_name, :position, :games, :games_started, :at_bats, :runs, :hits,
-    :doubles, :triples, :hr, :rbi, :sb, :caught_stealing, :sacrifice_hits, :sacrifice_flies,
-    :errors, :pb, :walks, :struck_out, :hit_by_pitch
-  attr_reader :team
-
-  def initialize data, team
-    @surname = data['SURNAME']
-    @given_name = data['GIVEN_NAME']
-    @rbi = data['RBI'].to_i
-    @hr = data['HOME_RUNS'].to_i
-    @sb = data['STEALS'].to_i
-    @runs = data['RUNS'].to_i
-
-    @hits = data['HITS'].to_i
-    @at_bats = data['AT_BATS'].to_i
-
-    @team = team
-  end
+class Player < ActiveRecord::Base
+  belongs_to :team
+  attr_accessible :at_bats
+  attr_accessible :caught_stealing
+  attr_accessible :doubles
+  attr_accessible :errs
+  attr_accessible :games
+  attr_accessible :games_started
+  attr_accessible :hit_by_pitch
+  attr_accessible :hits
+  attr_accessible :home_runs
+  attr_accessible :pb
+  attr_accessible :position
+  attr_accessible :rbi
+  attr_accessible :runs
+  attr_accessible :sacrifice_flies
+  attr_accessible :sacrifice_hits
+  attr_accessible :steals
+  attr_accessible :struck_out
+  attr_accessible :surname
+  attr_accessible :given_name
+  attr_accessible :triples
+  attr_accessible :walks
+  attr_accessible :team_id
+  attr_accessible :complete_games, :shut_outs, :era, :innings, :earned_runs, :hit_batter, :wild_pitches, :balk, :walked_batter
 
   def name
     [given_name, surname].join(' ')
   end
 
   def avg
-    return 0 if hits.zero? || at_bats.zero?
-
+    # TODO if hits or at_bats not present, should avg be 0?
+    return 0 if hits.blank? || at_bats.blank?
+    return 0 if hits.to_i.zero? || at_bats.to_i.zero?
     '%.3f' % (hits.to_f / at_bats)
   end
 end
