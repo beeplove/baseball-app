@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+
+<html ng-app='Baseball'>
+  <head>
+    <title>Baseball App</title>
+
+    <script type="text/javascript" ng:autobind src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="/assets/players.js"></script>
+
+    <link rel="stylesheet" href="/assets/player.css">
+
+
+    <!-- Awesome Fonts -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="stylesheets/base.css">
+    <link rel="stylesheet" href="stylesheets/skeleton.css">
+    <link rel="stylesheet" href="stylesheets/layout.css">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">    
+
+  </head>
+
+
+  <body>
+
+  <div class='container' ng-controller="PlayerCtrl">
+    <div class='sixteen columns header'>
+      <span class='two columns' ng-repeat="header in headers">
+        <a href="" ng-click="onClickHeader(header)" ng-class="{'selected' : (header.toLowerCase()==selectedHeader)}">{{header}}</a>
+        <small ng-show="(header.toLowerCase()==selectedHeader)">
+          <sub ng-show="!reverse">v</sub>
+          <sup ng-show="reverse">^</sup>
+        </small>
+      </span>
+    </div>
+
+    <div class='sixteen columns' ng-repeat="player in players | orderBy:predicate" ng-class-odd="'odd'" ng-class-even="'even'">
+      <span class='two columns' ng-repeat="header in headers">{{ player|getter:headers[$index] }}</span>
+    </div>
+  <div>
+
+  </body>
+</html>

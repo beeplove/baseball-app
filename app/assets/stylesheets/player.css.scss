@@ -1,0 +1,28 @@
+.header {
+  background-color: #aaa;
+
+  a {
+    font: {
+      weight: bold;
+      color: #fff;
+    }
+  }
+  
+  a:visited {
+    font: {
+      weight: bold;
+      color: #fff;
+    }
+  }
+}
+
+.odd {
+}
+
+.even {
+  background-color: #ddd;
+}
+
+.selected {
+  background-color: #f00;
+}
