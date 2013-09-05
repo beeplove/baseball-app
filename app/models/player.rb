@@ -38,4 +38,12 @@ class Player < ActiveRecord::Base
   def hr
     home_runs
   end
+
+  def home_runs
+    read_attribute(:home_runs).to_i
+  end
+
+  def runs
+    read_attribute(:runs).to_i
+  end
 end
