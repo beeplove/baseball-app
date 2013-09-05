@@ -7,13 +7,16 @@ namespace :baseball do
     xml = Nokogiri::XML(open('http://www.cafeconleche.org/examples/baseball/1998statistics.xml'))
     data = Hash.from_xml(xml.to_s)    
 
-    #     @year = data['YEAR']
-    # @leagues = data['LEAGUE'].collect { |league| League.new(league, self) }
+    # @name = data['LEAGUE_NAME']
+    # @divisions = data['DIVISION'].collect { |division| Division.new(division, self)}
+    # @season = season
 
-    #         @@season = Season.new(hash['SEASON'])
-
-    season = data['SEASON']
-    Season.create(year: season['YEAR'])
+    Season.destroy_all
+    season_data = data['SEASON']
+    season = Season.create(year: season_data['YEAR'])
+    season_data['LEAGUE'].each do |league_data|
+      league = League.create(name: league_data['LEAGUE_NAME'], season_id: season.id)
+    end
   end
 
 end
