@@ -12,7 +12,8 @@ class DataController < ApplicationController
                 avg: player.avg,
                 hr: player.hr,
                 rbi: player.rbi,
-                runs: player.runs
+                runs: player.runs,
+                sb: player.steals
               }
             end
           end
@@ -21,7 +22,7 @@ class DataController < ApplicationController
     end
 
     result = {
-      headers: [ 'NAME', 'AVG', 'HR', 'RBI', 'RUNS' ],
+      headers: [ 'NAME', 'AVG', 'HR', 'RBI', 'RUNS', 'SB'],
       data: data
     }
 

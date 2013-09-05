@@ -23,7 +23,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :triples
       t.integer :home_runs
       t.integer :rbi
-      t.string :steals
+      t.integer :steals
       t.string :caught_stealing
       t.string :sacrifice_hits
       t.string :sacrifice_flies
