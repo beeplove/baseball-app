@@ -37,4 +37,12 @@ gem 'nokogiri'
 # To use debugger
 # gem 'debugger'
 
+group :development do
+  gem 'debugger'
+end
+
+group :test do
+  gem 'rspec-rails'
+end
+
 ruby '1.9.3'
