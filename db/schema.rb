@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130905162748) do
     t.integer  "shut_outs"
     t.decimal  "era",             :precision => 10, :scale => 0
     t.integer  "at_bats"
-    t.string   "runs"
+    t.integer  "runs"
     t.string   "earned_runs"
     t.string   "innings"
     t.integer  "hits"
