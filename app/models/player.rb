@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   belongs_to :team
+
   attr_accessible :at_bats
   attr_accessible :caught_stealing
   attr_accessible :doubles
@@ -35,8 +36,8 @@ class Player < ActiveRecord::Base
     '%.3f' % (hits.to_f / at_bats)
   end
 
-  def hr
-    home_runs
+  def rbi
+    read_attribute(:rbi).to_i
   end
 
   def home_runs
@@ -45,5 +46,9 @@ class Player < ActiveRecord::Base
 
   def runs
     read_attribute(:runs).to_i
+  end
+
+  def steals
+    read_attribute(:steals).to_i
   end
 end

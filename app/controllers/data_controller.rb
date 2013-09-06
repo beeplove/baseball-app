@@ -10,7 +10,7 @@ class DataController < ApplicationController
               data << {
                 name: player.name,
                 avg: player.avg,
-                hr: player.hr,
+                hr: player.home_runs,
                 rbi: player.rbi,
                 runs: player.runs,
                 sb: player.steals
