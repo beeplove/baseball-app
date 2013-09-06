@@ -51,7 +51,7 @@
       </span>
     </div>
 
-    <div class='sixteen columns' ng-repeat="player in players | orderBy:predicate" ng-class-odd="'odd'" ng-class-even="'even'">
+    <div class='sixteen columns' ng-repeat="player in players | orderBy:predicate" ng-class-odd="'odd'" ng-class-even="'even'" ng-show="$index < 25">
       <span class='two columns' ng-repeat="header in headers">{{ player|getter:headers[$index] }}</span>
     </div>
   <div>
